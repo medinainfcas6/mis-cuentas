@@ -1,1 +1,22 @@
+name: Actualizar Mis Cuentas
+on:
+workflow_dispatch:
 
+jobs:
+build:
+runs-on: ubuntu-latest
+steps:
+- name: Copiar repositorio
+uses: actions/checkout@v4
+with:
+token: ${{ secrets.GH_PAT }}
+
+- name: Configurar Git
+run: |
+git config --global user.name "Bot de Mis Cuentas"
+git config --global user.email "bot@users.noreply.github.com"
+
+- name: Sincronizar cambios
+run: |
+git pull
+echo "Todo listo para recibir actualizaciones automáticas."
